@@ -18,7 +18,7 @@ javafx {
 }
 
 application {
-    mainClass = 'com.example.javafx.App'
+    mainClass = 'com.example.javafx.FXMLLauncher'
 }
 
 java {

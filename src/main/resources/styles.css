@@ -24,3 +24,49 @@
 .button:pressed {
     -fx-background-color: #004578;
 }
+
+/* Additional styles for advanced example */
+.menu-bar {
+    -fx-background-color: #e8e8e8;
+}
+
+.text-field {
+    -fx-background-radius: 3px;
+    -fx-border-radius: 3px;
+    -fx-border-color: #cccccc;
+}
+
+.text-field:focused {
+    -fx-border-color: #007acc;
+    -fx-border-width: 2px;
+}
+
+.text-area {
+    -fx-background-radius: 3px;
+    -fx-border-radius: 3px;
+    -fx-border-color: #cccccc;
+}
+
+.text-area:focused {
+    -fx-border-color: #007acc;
+    -fx-border-width: 2px;
+}
+
+.combo-box {
+    -fx-background-radius: 3px;
+    -fx-border-radius: 3px;
+}
+
+.check-box .box {
+    -fx-background-radius: 2px;
+    -fx-border-radius: 2px;
+}
+
+.radio-button .radio {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+}
+
+.progress-bar {
+    -fx-accent: #007acc;
+}
