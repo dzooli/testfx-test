@@ -68,7 +68,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\javafx-accessibility-app.jar;%APP_HOME%\lib\javafx-fxml-17.0.2-win.jar;%APP_HOME%\lib\javafx-controls-17.0.2-win.jar;%APP_HOME%\lib\javafx-controls-17.0.2.jar;%APP_HOME%\lib\javafx-graphics-17.0.2-win.jar;%APP_HOME%\lib\javafx-graphics-17.0.2.jar;%APP_HOME%\lib\javafx-base-17.0.2-win.jar;%APP_HOME%\lib\javafx-base-17.0.2.jar
+set CLASSPATH=%APP_HOME%\lib\javafx-accessibility-app.jar;%APP_HOME%\lib\javafx-fxml-21.0.4-win.jar;%APP_HOME%\lib\javafx-controls-21.0.4-win.jar;%APP_HOME%\lib\javafx-graphics-21.0.4-win.jar;%APP_HOME%\lib\javafx-base-21.0.4-win.jar
 
 
 @rem Execute javafx-accessibility-app
