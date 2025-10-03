@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/21.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.AdvancedController">
+   <top>
+      <MenuBar fx:id="menuBar">
+        <menus>
+          <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="newMenuItem" mnemonicParsing="false" onAction="#handleNew" text="New" />
+              <MenuItem fx:id="openMenuItem" mnemonicParsing="false" onAction="#handleOpen" text="Open" />
+              <SeparatorMenuItem />
+              <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+            </items>
+          </Menu>
+          <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#handleAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox fx:id="centerVBox" alignment="CENTER" spacing="15.0">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <Label fx:id="titleLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Advanced JavaFX FXML Example" />
+            <HBox fx:id="inputHBox" alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="Enter your name:" />
+                  <TextField fx:id="nameTextField" promptText="Type your name here..." />
+                  <Button fx:id="greetButton" mnemonicParsing="false" onAction="#handleGreet" text="Greet" />
+               </children>
+            </HBox>
+            <TextArea fx:id="outputTextArea" editable="false" prefHeight="100.0" prefWidth="300.0" promptText="Output will appear here..." />
+            <HBox fx:id="controlsHBox" alignment="CENTER" spacing="10.0">
+               <children>
+                  <CheckBox fx:id="uppercaseCheckBox" mnemonicParsing="false" text="Uppercase" />
+                  <RadioButton fx:id="formalRadio" mnemonicParsing="false" text="Formal">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="greetingStyle" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="casualRadio" mnemonicParsing="false" selected="true" text="Casual" toggleGroup="$greetingStyle" />
+                  <ComboBox fx:id="languageComboBox" promptText="Language" />
+               </children>
+            </HBox>
+            <Button fx:id="clearButton" mnemonicParsing="false" onAction="#handleClear" style="-fx-background-color: #ff6b6b; -fx-text-fill: white;" text="Clear All" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox fx:id="statusHBox" alignment="CENTER_LEFT" spacing="10.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <children>
+            <Label text="Status:" />
+            <Label fx:id="statusLabel" text="Ready" />
+            <Region HBox.hgrow="ALWAYS" />
+            <ProgressBar fx:id="progressBar" prefWidth="100.0" progress="0.0" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
