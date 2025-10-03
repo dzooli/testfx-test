@@ -1,11 +1,7 @@
 package com.example.javafx.test;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,7 +9,12 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
-import static org.junit.jupiter.api.Assertions.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * Simple working TestFX test for JavaFX Advanced Application.
@@ -23,8 +24,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(ApplicationExtension.class)
 public class WorkingAdvancedApplicationTest {
 
+    /**
+     * Configures system properties for running JavaFX tests in headless mode.
+     * Sets relevant properties if "testfx.headless" is enabled.
+     */
     @BeforeAll
     public static void setupHeadlessMode() {
+
         // Ensure headless mode is properly configured
         if (Boolean.getBoolean("testfx.headless")) {
             System.setProperty("testfx.robot", "glass");
