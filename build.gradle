@@ -10,6 +10,17 @@ repositories {
 dependencies {
     implementation 'org.openjfx:javafx-controls:21.0.4'
     implementation 'org.openjfx:javafx-fxml:21.0.4'
+    
+    // Using older, more stable TestFX version
+    testImplementation 'org.testfx:testfx-core:4.0.15-alpha'
+    testImplementation 'org.testfx:testfx-junit5:4.0.15-alpha'
+    
+    // JUnit 5 (Jupiter)
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    
+    // Use AssertJ instead of Hamcrest for simpler assertions
+    testImplementation 'org.assertj:assertj-core:3.24.2'
 }
 
 javafx {
@@ -18,7 +29,31 @@ javafx {
 }
 
 application {
+    mainClass = 'com.example.javafx.AdvancedLauncher'
+}
+
+// Task to run the selector version
+task runSelector(type: JavaExec) {
     mainClass = 'com.example.javafx.FXMLLauncher'
+    classpath = sourceSets.main.runtimeClasspath
+    jvmArgs = run.jvmArgs
+}
+
+// Task to run advanced application directly 
+task runAdvanced(type: JavaExec) {
+    mainClass = 'com.example.javafx.AdvancedLauncher'
+    classpath = sourceSets.main.runtimeClasspath
+    jvmArgs = [
+        '--module-path', configurations.runtimeClasspath.asPath,
+        '--add-modules', 'javafx.controls,javafx.fxml',
+        '--add-exports=java.desktop/sun.awt=ALL-UNNAMED',
+        '--add-exports=java.desktop/java.awt.peer=ALL-UNNAMED',
+        '--add-opens=java.desktop/javax.accessibility=ALL-UNNAMED',
+        '-Djavax.accessibility.assistive_technologies=com.sun.java.accessibility.util.AWTEventMonitor',
+        '-Djava.awt.AccessBridge.enabled=true',
+        '-Djavax.accessibility.screen_magnifier_present=true',
+        '-Dsun.awt.AccessBridge.enabled=true'
+    ]
 }
 
 java {
@@ -26,11 +61,26 @@ java {
     targetCompatibility = JavaVersion.VERSION_21
 }
 
+test {
+    useJUnitPlatform()
+    
+    // Non-headless mode for debugging
+    systemProperty 'testfx.robot', 'glass'
+    // systemProperty 'testfx.headless', 'true'
+    // systemProperty 'java.awt.headless', 'true'
+}
+
 run {
-    // Enable accessibility
+    // Enable accessibility for JavaAccessBridge compatibility
     jvmArgs = [
         '--add-exports=java.desktop/sun.awt=ALL-UNNAMED',
         '--add-exports=java.desktop/java.awt.peer=ALL-UNNAMED',
-        '-Djavax.accessibility.assistive_technologies=com.sun.java.accessibility.util.AWTEventMonitor'
+        '--add-opens=java.desktop/javax.accessibility=ALL-UNNAMED',
+        '--add-opens=java.desktop/java.awt=ALL-UNNAMED',
+        '-Djava.awt.AccessBridge.enabled=true',
+        '-Djavax.accessibility.assistive_technologies=com.sun.java.accessibility.util.AWTEventMonitor',
+        '-Djavax.accessibility.screen_magnifier_present=true',
+        '-Dsun.awt.AccessBridge.enabled=true',
+        '-Dsun.awt.enableExtraMouseButtons=true'
     ]
 }
