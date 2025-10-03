@@ -84,8 +84,6 @@ public class WorkingAdvancedApplicationTest {
         assertFalse(outputText.trim().isEmpty(), "Output should not be empty");
         assertTrue(outputText.contains("TestFX User"), 
                   "Output should contain the input name 'TestFX User'");
-        
-        System.out.println("Test output: " + outputText);
     }
 
     @Test
@@ -178,7 +176,7 @@ public class WorkingAdvancedApplicationTest {
         // Re-query the text area after clear and new input
         TextArea outputAreaAfterClear = robot.lookup("#outputTextArea").queryAs(TextArea.class);
         String casualOutput = outputAreaAfterClear.getText();
-        System.out.println("Casual output: '" + casualOutput + "'");
+
         assertTrue(casualOutput.contains("Casual User"), 
                   "Casual output should contain the input name. Actual output: " + casualOutput);
         assertTrue(casualOutput.contains("Hello"), 

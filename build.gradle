@@ -32,13 +32,6 @@ application {
     mainClass = 'com.example.javafx.AdvancedLauncher'
 }
 
-// Task to run the selector version
-task runSelector(type: JavaExec) {
-    mainClass = 'com.example.javafx.FXMLLauncher'
-    classpath = sourceSets.main.runtimeClasspath
-    jvmArgs = run.jvmArgs
-}
-
 // Task to run advanced application directly 
 task runAdvanced(type: JavaExec) {
     mainClass = 'com.example.javafx.AdvancedLauncher'
